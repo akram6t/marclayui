@@ -1,0 +1,75 @@
+/* MarclayUI — Avatar */
+.mcl-avatar {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  flex: none;
+  border-radius: var(--mcl-avatar-radius, 44%);
+  background: var(--mcl-bg);
+  box-shadow: var(--mcl-out-sm);
+  display: inline-grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--mcl-primary);
+  letter-spacing: 0.02em;
+  overflow: visible;
+}
+.mcl-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+}
+.mcl-avatar-gradient {
+  background: linear-gradient(145deg, var(--mcl-primary-2), var(--mcl-primary));
+  color: var(--mcl-primary-ink);
+}
+.mcl-avatar-xs {
+  width: 28px;
+  height: 28px;
+  font-size: 10.5px;
+}
+.mcl-avatar-sm {
+  width: 36px;
+  height: 36px;
+  font-size: 13px;
+}
+.mcl-avatar-lg {
+  width: 64px;
+  height: 64px;
+  font-size: 21px;
+}
+.mcl-avatar-xl {
+  width: 88px;
+  height: 88px;
+  font-size: 29px;
+}
+.mcl-avatar-status {
+  position: absolute;
+  right: 0;
+  bottom: 1px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--mcl-bg);
+}
+.mcl-avatar-status-online {
+  background: var(--mcl-success);
+}
+.mcl-avatar-status-offline {
+  background: var(--mcl-muted);
+}
+.mcl-avatar-status-busy {
+  background: var(--mcl-danger);
+}
+.mcl-avatar-group {
+  display: inline-flex;
+  align-items: center;
+}
+.mcl-avatar-group > .mcl-avatar {
+  box-shadow: var(--mcl-out-xs);
+}
+.mcl-avatar-group > .mcl-avatar + .mcl-avatar {
+  margin-left: -12px;
+}

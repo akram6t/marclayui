@@ -1,0 +1,93 @@
+/* MarclayUI — Modal */
+.mcl-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--mcl-overlay-bg);
+  -webkit-backdrop-filter: blur(var(--mcl-overlay-blur));
+  backdrop-filter: blur(var(--mcl-overlay-blur));
+  animation: mcl-fade 0.2s ease;
+}
+.mcl-modal {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: min(520px, 92vw);
+  max-height: 85vh;
+  background: var(--mcl-bg);
+  border-radius: var(--mcl-radius-lg);
+  box-shadow: var(--mcl-out);
+  outline: none;
+  animation: mcl-pop 0.28s var(--mcl-ease);
+}
+.mcl-modal-sm {
+  max-width: min(420px, 92vw);
+}
+.mcl-modal-lg {
+  max-width: min(680px, 92vw);
+}
+.mcl-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 24px 28px 0;
+}
+.mcl-modal-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--mcl-ink);
+}
+.mcl-modal-close {
+  width: 36px;
+  height: 36px;
+  flex: none;
+  border: 0;
+  border-radius: 14px;
+  background: var(--mcl-bg);
+  box-shadow: var(--mcl-out-xs);
+  color: var(--mcl-muted);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+.mcl-modal-close:active {
+  box-shadow: var(--mcl-in-xs);
+}
+.mcl-modal-close:focus-visible {
+  outline: none;
+  box-shadow: var(--mcl-out-xs), 0 0 0 2.5px var(--mcl-ring);
+}
+.mcl-modal-body {
+  padding: 20px 28px;
+  overflow-y: auto;
+  color: var(--mcl-muted);
+  font-weight: 500;
+  font-size: 14.5px;
+}
+.mcl-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 4px 28px 24px;
+}
+@keyframes mcl-fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes mcl-pop {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+  }
+}

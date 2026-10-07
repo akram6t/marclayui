@@ -1,0 +1,68 @@
+/* MarclayUI — Range (styled native slider, WebKit + Firefox) */
+.mcl-range-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+.mcl-range-value {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--mcl-primary);
+}
+.mcl-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 240px;
+  max-width: 100%;
+  height: 26px;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.mcl-range:focus {
+  outline: none;
+}
+.mcl-range::-webkit-slider-runnable-track {
+  height: 18px;
+  border-radius: 999px;
+  background: var(--mcl-bg);
+  box-shadow: var(--mcl-in-sm);
+}
+.mcl-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  margin-top: -4px;
+  border: 0;
+  border-radius: 50%;
+  background: linear-gradient(145deg, var(--mcl-primary-2), var(--mcl-primary));
+  box-shadow: var(--mcl-out-xs), var(--mcl-clay-p);
+  transition: box-shadow 0.2s;
+}
+.mcl-range:focus-visible::-webkit-slider-thumb {
+  box-shadow: var(--mcl-out-xs), 0 0 0 3px var(--mcl-ring);
+}
+.mcl-range::-moz-range-track {
+  height: 18px;
+  border-radius: 999px;
+  background: var(--mcl-bg);
+  box-shadow: var(--mcl-in-sm);
+}
+.mcl-range::-moz-range-thumb {
+  width: 26px;
+  height: 26px;
+  border: 0;
+  border-radius: 50%;
+  background: linear-gradient(145deg, var(--mcl-primary-2), var(--mcl-primary));
+  box-shadow: var(--mcl-out-xs), var(--mcl-clay-p);
+}
+.mcl-range:focus-visible::-moz-range-thumb {
+  box-shadow: var(--mcl-out-xs), 0 0 0 3px var(--mcl-ring);
+}
+.mcl-range:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}

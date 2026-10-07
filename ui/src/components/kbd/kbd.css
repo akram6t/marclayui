@@ -1,0 +1,66 @@
+/* MarclayUI — Kbd (keyboard key cap) */
+.mcl-kbd {
+  display: inline-block;
+  padding: 3px 9px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--mcl-bg);
+  box-shadow: var(--mcl-out-xs), inset -2px -3px 0 var(--mcl-sd);
+  font-family: var(--mcl-mono);
+  font-size: 11.5px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--mcl-ink);
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+/* ButtonGroup — segmented control inside an inset well */
+.mcl-btn-group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 6px;
+  border-radius: var(--mcl-radius);
+  background: var(--mcl-bg);
+  box-shadow: var(--mcl-in-sm);
+  max-width: 100%;
+}
+.mcl-btn-group .mcl-btn {
+  box-shadow: none;
+  background: transparent;
+  padding: 11px 20px;
+  border-radius: calc(var(--mcl-radius) - 6px);
+  transform: none;
+}
+.mcl-btn-group .mcl-btn:hover {
+  transform: none;
+  box-shadow: var(--mcl-out-xs);
+}
+.mcl-btn-group .mcl-btn:active {
+  box-shadow: var(--mcl-in-xs);
+}
+.mcl-btn-group .mcl-btn-primary {
+  background: linear-gradient(145deg, var(--mcl-primary-2), var(--mcl-primary));
+  color: var(--mcl-primary-ink);
+  box-shadow: var(--mcl-clay-p);
+}
+.mcl-btn-group .mcl-btn-secondary {
+  background: linear-gradient(145deg, var(--mcl-secondary-2), var(--mcl-secondary));
+  color: var(--mcl-secondary-ink);
+  box-shadow: var(--mcl-clay-s);
+}
+.mcl-btn-group .mcl-btn-accent {
+  background: linear-gradient(145deg, var(--mcl-accent-2), var(--mcl-accent));
+  color: var(--mcl-accent-ink);
+  box-shadow: var(--mcl-clay-a);
+}
+.mcl-btn-group .mcl-btn-danger {
+  background: linear-gradient(145deg, var(--mcl-danger-2), var(--mcl-danger));
+  color: var(--mcl-danger-ink);
+  box-shadow: var(--mcl-clay-d);
+}
+.mcl-btn-group .mcl-btn-sm {
+  padding: 8px 15px;
+}

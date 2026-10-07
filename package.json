@@ -1,0 +1,35 @@
+{
+  "name": "marclayui-docs",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "ui"
+  ],
+  "scripts": {
+    "predev": "npm run build:ui",
+    "dev": "next dev",
+    "prebuild": "npm run build:ui",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint src",
+    "test": "npm run test --workspace ui",
+    "check:props": "node scripts/check-props.mjs",
+    "build:ui": "npm run build --workspace ui",
+    "watch:ui": "npm run dev --workspace ui",
+    "build:all": "npm run build:ui && npm run build"
+  },
+  "dependencies": {
+    "marclayui": "*",
+    "next": "16.3.8",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.8",
+    "typescript": "^5"
+  }
+}

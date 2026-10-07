@@ -1,0 +1,58 @@
+/* MarclayUI — Select (native <select>, styled for every engine) */
+.mcl-select-shell {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+.mcl-select-shell::after {
+  content: "";
+  position: absolute;
+  right: 19px;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  border-right: 2.5px solid var(--mcl-muted);
+  border-bottom: 2.5px solid var(--mcl-muted);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+.mcl-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 14px 46px 14px 20px;
+  border: 0;
+  outline: none;
+  border-radius: var(--mcl-radius);
+  background: var(--mcl-bg);
+  box-shadow: var(--mcl-in-sm);
+  font-family: inherit;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--mcl-ink);
+  cursor: pointer;
+  transition: box-shadow 0.25s;
+  max-width: 100%;
+}
+.mcl-select:focus {
+  box-shadow: var(--mcl-in-sm), 0 0 0 2.5px var(--mcl-ring);
+}
+.mcl-select-invalid {
+  box-shadow: var(--mcl-in-sm), 0 0 0 2.5px var(--mcl-ring-danger);
+}
+.mcl-select-sm {
+  padding: 10px 40px 10px 16px;
+  font-size: 13.5px;
+  border-radius: var(--mcl-radius-sm);
+}
+.mcl-select-lg {
+  padding: 17px 52px 17px 24px;
+  font-size: 16px;
+  border-radius: calc(var(--mcl-radius) + 4px);
+}
+/* dropdown list colors */
+.mcl-select option {
+  background: var(--mcl-bg);
+  color: var(--mcl-ink);
+  font-family: inherit;
+}

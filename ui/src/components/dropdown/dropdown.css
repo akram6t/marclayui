@@ -1,0 +1,182 @@
+/* MarclayUI — Dropdown (custom popup menu, never the native browser list) */
+.mcl-dropdown-shell {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+.mcl-dropdown-block {
+  display: block;
+  width: 100%;
+}
+
+/* trigger — an inset well like Select, but a real button */
+.mcl-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  border: 0;
+  outline: none;
+  border-radius: var(--mcl-radius);
+  background: var(--mcl-bg);
+  box-shadow: var(--mcl-in-sm);
+  font-family: inherit;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--mcl-ink);
+  text-align: left;
+  cursor: pointer;
+  transition: box-shadow 0.25s;
+}
+.mcl-dropdown-trigger:focus-visible {
+  box-shadow: var(--mcl-in-sm), 0 0 0 2.5px var(--mcl-ring);
+}
+.mcl-dropdown-trigger:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.mcl-dropdown-md {
+  padding: 14px 20px;
+}
+.mcl-dropdown-sm {
+  padding: 10px 16px;
+  font-size: 13.5px;
+  border-radius: var(--mcl-radius-sm);
+}
+.mcl-dropdown-lg {
+  padding: 17px 24px;
+  font-size: 16px;
+  border-radius: calc(var(--mcl-radius) + 4px);
+}
+.mcl-dropdown-value {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mcl-dropdown-placeholder {
+  color: var(--mcl-muted);
+  opacity: 0.75;
+}
+.mcl-dropdown-chevron {
+  position: static;
+  width: 9px;
+  height: 9px;
+  flex: none;
+  border-right: 2.5px solid var(--mcl-muted);
+  border-bottom: 2.5px solid var(--mcl-muted);
+  transform: rotate(45deg);
+  transition: transform 0.25s var(--mcl-ease);
+}
+.mcl-dropdown-trigger[aria-expanded="true"] .mcl-dropdown-chevron {
+  transform: rotate(225deg);
+}
+
+/* popup menu */
+.mcl-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 70;
+  min-width: 200px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 10px;
+  background: var(--mcl-bg);
+  border-radius: calc(var(--mcl-radius) - 2px);
+  box-shadow: var(--mcl-out);
+  outline: none;
+  animation: mcl-menu-pop 0.18s var(--mcl-ease);
+}
+/* viewport-aware placement */
+.mcl-dropdown-menu-up {
+  top: auto;
+  bottom: calc(100% + 8px);
+  animation-name: mcl-menu-pop-up;
+}
+.mcl-dropdown-menu-left {
+  left: auto;
+  right: 0;
+}
+@keyframes mcl-menu-pop-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+}
+.mcl-dropdown-menu.mcl-dropdown-sm {
+  border-radius: var(--mcl-radius-sm);
+}
+@keyframes mcl-menu-pop {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+}
+
+.mcl-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  border-radius: var(--mcl-radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--mcl-ink);
+  cursor: pointer;
+  user-select: none;
+  transition: box-shadow 0.15s, color 0.15s;
+}
+.mcl-dropdown-item-active {
+  box-shadow: var(--mcl-out-xs);
+}
+.mcl-dropdown-item-selected {
+  color: var(--mcl-primary);
+  box-shadow: var(--mcl-in-xs);
+}
+.mcl-dropdown-item-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.mcl-dropdown-item-label {
+  min-width: 0;
+  flex: 1;
+}
+.mcl-dropdown-tick {
+  color: var(--mcl-primary);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+/* multi-select checkbox inside the menu */
+.mcl-dropdown-check {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  flex: none;
+  border-radius: 8px;
+  background: var(--mcl-bg);
+  box-shadow: var(--mcl-in-sm);
+  display: grid;
+  place-items: center;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.mcl-dropdown-check::after {
+  content: "";
+  width: 9px;
+  height: 5px;
+  border-left: 2.5px solid var(--mcl-primary-ink);
+  border-bottom: 2.5px solid var(--mcl-primary-ink);
+  transform: rotate(-45deg) scale(0);
+  margin-top: -2px;
+  transition: transform 0.15s var(--mcl-ease);
+}
+.mcl-dropdown-item-selected .mcl-dropdown-check {
+  background: linear-gradient(145deg, var(--mcl-primary-2), var(--mcl-primary));
+  box-shadow: var(--mcl-out-xs), var(--mcl-clay-p);
+}
+.mcl-dropdown-item-selected .mcl-dropdown-check::after {
+  transform: rotate(-45deg) scale(1);
+}

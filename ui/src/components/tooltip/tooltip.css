@@ -1,0 +1,100 @@
+/* MarclayUI — Tooltip (CSS-only, hover + focus-within) */
+.mcl-tooltip {
+  position: relative;
+  display: inline-flex;
+}
+.mcl-tooltip::after {
+  content: attr(data-mcl-tooltip);
+  position: absolute;
+  z-index: 50;
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: var(--mcl-ink);
+  color: var(--mcl-bg);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+  white-space: nowrap;
+  box-shadow: var(--mcl-out-sm);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s, transform 0.18s var(--mcl-ease);
+}
+.mcl-tooltip::before {
+  content: "";
+  position: absolute;
+  z-index: 51;
+  width: 9px;
+  height: 9px;
+  background: var(--mcl-ink);
+  transform: rotate(45deg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s, transform 0.18s var(--mcl-ease);
+}
+
+.mcl-tooltip-top::after {
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translate(-50%, 4px);
+}
+.mcl-tooltip-top::before {
+  bottom: calc(100% + 6px);
+  left: 50%;
+  margin-left: -4.5px;
+}
+.mcl-tooltip-bottom::after {
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translate(-50%, -4px);
+}
+.mcl-tooltip-bottom::before {
+  top: calc(100% + 6px);
+  left: 50%;
+  margin-left: -4.5px;
+}
+.mcl-tooltip-left::after {
+  right: calc(100% + 10px);
+  top: 50%;
+  transform: translate(4px, -50%);
+}
+.mcl-tooltip-left::before {
+  right: calc(100% + 6px);
+  top: 50%;
+  margin-top: -4.5px;
+}
+.mcl-tooltip-right::after {
+  left: calc(100% + 10px);
+  top: 50%;
+  transform: translate(-4px, -50%);
+}
+.mcl-tooltip-right::before {
+  left: calc(100% + 6px);
+  top: 50%;
+  margin-top: -4.5px;
+}
+
+.mcl-tooltip-top:hover::after,
+.mcl-tooltip-top:focus-within::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+.mcl-tooltip-bottom:hover::after,
+.mcl-tooltip-bottom:focus-within::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+.mcl-tooltip-left:hover::after,
+.mcl-tooltip-left:focus-within::after {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+.mcl-tooltip-right:hover::after,
+.mcl-tooltip-right:focus-within::after {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+.mcl-tooltip:hover::before,
+.mcl-tooltip:focus-within::before {
+  opacity: 1;
+}

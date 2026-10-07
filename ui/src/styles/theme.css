@@ -1,0 +1,246 @@
+/* ============================================================
+   MarclayUI — design tokens
+   Two style presets, each with light + dark palettes:
+   • "clay" (default) — claymorphism: warm terracotta, squircles, Quicksand
+   • "neo"            — neumorphism: grey-blue surfaces, violet/gold accent,
+                        circles, Poppins (light) / Manrope (dark)
+   Selection is exposed as [data-preset] on <html>; mode as [data-theme].
+   Runtime color overrides (via useTheme().setColors) layer on top as
+   inline custom properties.
+   ============================================================ */
+:root {
+  /* ---------- preset: clay · light ---------- */
+  --mcl-bg: #ece4da;
+  --mcl-ink: #4a3f35;
+  --mcl-muted: #97897b;
+  --mcl-hair: rgba(120, 100, 80, 0.16);
+
+  /* brand tones: base, -2 (lighter for gradients), -ink (text on tone) */
+  --mcl-primary: #e0785a;
+  --mcl-primary-2: #f09a7e;
+  --mcl-primary-ink: #fff8f2;
+  --mcl-secondary: #a8b894;
+  --mcl-secondary-2: #b9c7a5;
+  --mcl-secondary-ink: #33402a;
+  --mcl-accent: #d9a854;
+  --mcl-accent-2: #e8c98f;
+  --mcl-accent-ink: #463510;
+  --mcl-success: #8fae76;
+  --mcl-success-2: #a5c48c;
+  --mcl-success-ink: #253416;
+  --mcl-danger: #d96a5f;
+  --mcl-danger-2: #e68d83;
+  --mcl-danger-ink: #fff3ef;
+  --mcl-warning: #d9a854;
+  --mcl-warning-2: #e8c98f;
+  --mcl-warning-ink: #463510;
+  --mcl-info: #7ba3b8;
+  --mcl-info-2: #98bccd;
+  --mcl-info-ink: #0f2a37;
+
+  /* deep: darkened tone for colored TEXT on the page background (light mode) */
+  --mcl-primary-deep: #b4532c;
+  --mcl-secondary-deep: #6d7d5a;
+  --mcl-accent-deep: #97701f;
+  --mcl-success-deep: #5c7a48;
+  --mcl-danger-deep: #b03a30;
+  --mcl-warning-deep: #97701f;
+  --mcl-info-deep: #3f7091;
+
+  /* shadow sources */
+  --mcl-sd: rgba(190, 168, 146, 0.6);
+  --mcl-sl: rgba(255, 253, 248, 0.95);
+  --mcl-sheen: rgba(255, 255, 255, 0.5);
+
+  /* focus rings */
+  --mcl-ring: rgba(224, 120, 90, 0.4);
+  --mcl-ring-danger: rgba(217, 106, 95, 0.5);
+
+  /* modal overlay */
+  --mcl-overlay-bg: rgba(40, 30, 22, 0.32);
+  --mcl-overlay-blur: 2px;
+
+  /* neumorphic shadows */
+  --mcl-out: 12px 12px 26px var(--mcl-sd), -12px -12px 26px var(--mcl-sl);
+  --mcl-out-sm: 7px 7px 15px var(--mcl-sd), -7px -7px 15px var(--mcl-sl);
+  --mcl-out-xs: 4px 4px 9px var(--mcl-sd), -4px -4px 9px var(--mcl-sl);
+  --mcl-in: inset 7px 7px 14px var(--mcl-sd), inset -7px -7px 14px var(--mcl-sl);
+  --mcl-in-sm: inset 4px 4px 9px var(--mcl-sd), inset -4px -4px 9px var(--mcl-sl);
+  --mcl-in-xs: inset 2px 2px 5px var(--mcl-sd), inset -2px -2px 5px var(--mcl-sl);
+
+  /* clay: extruded colored inner light, one per tone */
+  --mcl-clay-p: inset -5px -6px 10px rgba(120, 60, 35, 0.28), inset 5px 6px 10px rgba(255, 255, 255, 0.5);
+  --mcl-clay-s: inset -5px -6px 10px rgba(70, 90, 50, 0.25), inset 5px 6px 10px rgba(255, 255, 255, 0.5);
+  --mcl-clay-a: inset -5px -6px 10px rgba(120, 90, 30, 0.3), inset 5px 6px 10px rgba(255, 255, 255, 0.5);
+  --mcl-clay-c: inset -5px -6px 10px rgba(60, 90, 40, 0.28), inset 5px 6px 10px rgba(255, 255, 255, 0.5);
+  --mcl-clay-d: inset -5px -6px 10px rgba(120, 45, 35, 0.3), inset 5px 6px 10px rgba(255, 255, 255, 0.45);
+  --mcl-clay-w: inset -5px -6px 10px rgba(120, 90, 30, 0.3), inset 5px 6px 10px rgba(255, 255, 255, 0.5);
+  --mcl-clay-i: inset -5px -6px 10px rgba(35, 70, 90, 0.28), inset 5px 6px 10px rgba(255, 255, 255, 0.5);
+
+  /* shape & type */
+  --mcl-radius-sm: 15px;
+  --mcl-radius: 22px;
+  --mcl-radius-lg: 32px;
+  --mcl-avatar-radius: 44%;
+  --mcl-navbar-radius: 28px;
+  --mcl-font: 'Quicksand', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --mcl-mono: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace;
+  --mcl-ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+[data-theme="dark"] {
+  /* ---------- preset: clay · dark ---------- */
+  --mcl-bg: #27211b;
+  --mcl-ink: #ecdfd3;
+  --mcl-muted: #a3937f;
+  --mcl-hair: rgba(255, 235, 215, 0.09);
+
+  --mcl-primary: #e8815f;
+  --mcl-primary-2: #ff9d78;
+  --mcl-primary-ink: #fff8f2;
+  --mcl-secondary: #9db388;
+  --mcl-secondary-2: #b5c9a0;
+  --mcl-secondary-ink: #223016;
+  --mcl-accent: #d9a854;
+  --mcl-accent-2: #ecc98f;
+  --mcl-accent-ink: #3d2c05;
+  --mcl-success: #90b37a;
+  --mcl-success-2: #a9c993;
+  --mcl-success-ink: #1c2a10;
+  --mcl-danger: #e07b6f;
+  --mcl-danger-2: #ec9c92;
+  --mcl-danger-ink: #380e08;
+  --mcl-warning: #d9a854;
+  --mcl-warning-2: #ecc98f;
+  --mcl-warning-ink: #3d2c05;
+  --mcl-info: #7ba3b8;
+  --mcl-info-2: #98bccd;
+  --mcl-info-ink: #0f2a37;
+
+  --mcl-sd: rgba(12, 8, 5, 0.72);
+  --mcl-sl: rgba(255, 235, 215, 0.06);
+  --mcl-sheen: rgba(255, 235, 215, 0.07);
+
+  --mcl-ring: rgba(232, 129, 95, 0.45);
+  --mcl-ring-danger: rgba(224, 123, 111, 0.5);
+
+  --mcl-overlay-bg: rgba(10, 8, 6, 0.55);
+  --mcl-overlay-blur: 3px;
+
+  --mcl-clay-p: inset -5px -6px 10px rgba(70, 25, 8, 0.5), inset 5px 6px 10px rgba(255, 205, 170, 0.38);
+  --mcl-clay-s: inset -5px -6px 10px rgba(35, 50, 22, 0.5), inset 5px 6px 10px rgba(235, 245, 215, 0.32);
+  --mcl-clay-a: inset -5px -6px 10px rgba(85, 58, 10, 0.5), inset 5px 6px 10px rgba(255, 235, 195, 0.4);
+  --mcl-clay-c: inset -5px -6px 10px rgba(30, 55, 15, 0.5), inset 5px 6px 10px rgba(220, 245, 205, 0.3);
+  --mcl-clay-d: inset -5px -6px 10px rgba(90, 25, 15, 0.5), inset 5px 6px 10px rgba(255, 215, 205, 0.35);
+  --mcl-clay-w: inset -5px -6px 10px rgba(85, 58, 10, 0.5), inset 5px 6px 10px rgba(255, 235, 195, 0.4);
+  --mcl-clay-i: inset -5px -6px 10px rgba(15, 50, 70, 0.5), inset 5px 6px 10px rgba(210, 235, 250, 0.3);
+}
+
+/* ============================================================
+   preset: neo — pure neumorphism (Poppins light / Manrope dark,
+   violet accent in light, gold accent in dark, circles)
+   ============================================================ */
+[data-preset="neo"] {
+  --mcl-bg: #e0e5ec;
+  --mcl-ink: #3d4552;
+  --mcl-muted: #8a93a5;
+  --mcl-hair: rgba(61, 69, 82, 0.14);
+
+  --mcl-primary: #6d5dfc;
+  --mcl-primary-2: #9a8cff;
+  --mcl-primary-ink: #ffffff;
+  --mcl-secondary: #7f92b8;
+  --mcl-secondary-2: #9daecb;
+  --mcl-secondary-ink: #ffffff;
+  --mcl-accent: #d99e3f;
+  --mcl-accent-2: #ecc27c;
+  --mcl-accent-ink: #4a3405;
+  --mcl-success: #5f9e6e;
+  --mcl-success-2: #84bd92;
+  --mcl-success-ink: #173d20;
+  --mcl-danger: #d96a5f;
+  --mcl-danger-2: #e68d83;
+  --mcl-danger-ink: #fff3ef;
+  --mcl-warning: #d99e3f;
+  --mcl-warning-2: #ecc27c;
+  --mcl-warning-ink: #4a3405;
+  --mcl-info: #6b9bc3;
+  --mcl-info-2: #8fb8d8;
+  --mcl-info-ink: #0f2a37;
+
+  /* deep: darkened tone for colored TEXT on the page background (light mode) */
+  --mcl-primary-deep: #4a3bcc;
+  --mcl-secondary-deep: #55678c;
+  --mcl-accent-deep: #96691c;
+  --mcl-success-deep: #3f6d4d;
+  --mcl-danger-deep: #b34036;
+  --mcl-warning-deep: #96691c;
+  --mcl-info-deep: #456f94;
+
+  --mcl-sd: rgba(163, 177, 198, 0.62);
+  --mcl-sl: rgba(255, 255, 255, 0.95);
+  --mcl-sheen: rgba(255, 255, 255, 0.6);
+
+  --mcl-ring: rgba(109, 93, 252, 0.4);
+  --mcl-ring-danger: rgba(217, 106, 95, 0.5);
+
+  --mcl-overlay-bg: rgba(45, 52, 66, 0.32);
+  --mcl-overlay-blur: 2px;
+
+  /* neumorphism: neutral inner light instead of colored clay */
+  --mcl-clay-p: inset 2px 2px 4px rgba(255, 255, 255, 0.55);
+  --mcl-clay-s: inset 2px 2px 4px rgba(255, 255, 255, 0.55);
+  --mcl-clay-a: inset 2px 2px 4px rgba(255, 255, 255, 0.55);
+  --mcl-clay-c: inset 2px 2px 4px rgba(255, 255, 255, 0.55);
+  --mcl-clay-d: inset 2px 2px 4px rgba(255, 255, 255, 0.5);
+  --mcl-clay-w: inset 2px 2px 4px rgba(255, 255, 255, 0.55);
+  --mcl-clay-i: inset 2px 2px 4px rgba(255, 255, 255, 0.55);
+
+  --mcl-radius-sm: 14px;
+  --mcl-radius: 16px;
+  --mcl-radius-lg: 28px;
+  --mcl-avatar-radius: 50%;
+  --mcl-navbar-radius: 999px;
+  --mcl-font: var(--font-poppins, 'Poppins'), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+[data-preset="neo"][data-theme="dark"] {
+  --mcl-bg: #2b303b;
+  --mcl-ink: #d7dce6;
+  --mcl-muted: #8b93a5;
+  --mcl-hair: rgba(215, 220, 230, 0.1);
+
+  --mcl-primary: #e8b34b;
+  --mcl-primary-2: #f5cd7a;
+  --mcl-primary-ink: #3a2c0a;
+  --mcl-secondary: #7f8ba3;
+  --mcl-secondary-2: #a3afc6;
+  --mcl-secondary-ink: #1d222b;
+  --mcl-accent: #9a8cff;
+  --mcl-accent-2: #b8adff;
+  --mcl-accent-ink: #241a52;
+  --mcl-success: #7fb069;
+  --mcl-success-2: #9cc98a;
+  --mcl-success-ink: #1c2a10;
+  --mcl-danger: #e07b6f;
+  --mcl-danger-2: #ec9c92;
+  --mcl-danger-ink: #380e08;
+  --mcl-warning: #e8b34b;
+  --mcl-warning-2: #f5cd7a;
+  --mcl-warning-ink: #3a2c0a;
+  --mcl-info: #6b9bc3;
+  --mcl-info-2: #8fb8d8;
+  --mcl-info-ink: #0f2a37;
+
+  --mcl-sd: rgba(0, 0, 0, 0.55);
+  --mcl-sl: rgba(255, 255, 255, 0.055);
+  --mcl-sheen: rgba(255, 255, 255, 0.07);
+
+  --mcl-ring: rgba(232, 179, 75, 0.45);
+  --mcl-ring-danger: rgba(224, 123, 111, 0.5);
+
+  --mcl-overlay-bg: rgba(8, 10, 14, 0.55);
+  --mcl-overlay-blur: 3px;
+
+  --mcl-font: var(--font-manrope, 'Manrope'), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}

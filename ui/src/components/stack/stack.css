@@ -1,0 +1,60 @@
+/* MarclayUI — Stack (flex layout helpers) */
+.mcl-stack {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.mcl-stack-row {
+  flex-direction: row;
+}
+.mcl-stack-wrap {
+  flex-wrap: wrap;
+}
+.mcl-stack-gap-none {
+  gap: 0;
+}
+.mcl-stack-gap-xs {
+  gap: 6px;
+}
+.mcl-stack-gap-sm {
+  gap: 10px;
+}
+.mcl-stack-gap-md {
+  gap: 18px;
+}
+.mcl-stack-gap-lg {
+  gap: 28px;
+}
+.mcl-stack-gap-xl {
+  gap: 44px;
+}
+.mcl-stack-align-start {
+  align-items: flex-start;
+}
+.mcl-stack-align-center {
+  align-items: center;
+}
+.mcl-stack-align-end {
+  align-items: flex-end;
+}
+.mcl-stack-align-stretch {
+  align-items: stretch;
+}
+.mcl-stack-align-baseline {
+  align-items: baseline;
+}
+.mcl-stack-justify-start {
+  justify-content: flex-start;
+}
+.mcl-stack-justify-center {
+  justify-content: center;
+}
+.mcl-stack-justify-end {
+  justify-content: flex-end;
+}
+.mcl-stack-justify-between {
+  justify-content: space-between;
+}
+.mcl-stack-justify-around {
+  justify-content: space-around;
+}

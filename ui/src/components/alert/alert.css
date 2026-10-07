@@ -1,0 +1,86 @@
+/* MarclayUI — Alert */
+.mcl-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+  padding: 22px 24px;
+  border-radius: calc(var(--mcl-radius-lg) - 6px);
+  background: var(--mcl-bg);
+  box-shadow: var(--mcl-out-sm);
+}
+.mcl-alert-icon {
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: var(--mcl-bg);
+  box-shadow: var(--mcl-in-sm);
+  font-weight: 800;
+  font-size: 16px;
+  font-style: normal;
+}
+.mcl-alert-success .mcl-alert-icon {
+  color: var(--mcl-success);
+}
+.mcl-alert-danger .mcl-alert-icon {
+  color: var(--mcl-danger);
+}
+.mcl-alert-warning .mcl-alert-icon {
+  color: var(--mcl-warning);
+}
+.mcl-alert-info .mcl-alert-icon {
+  color: var(--mcl-info);
+}
+[data-theme="dark"] .mcl-alert-success .mcl-alert-icon {
+  color: var(--mcl-success-2);
+}
+[data-theme="dark"] .mcl-alert-danger .mcl-alert-icon {
+  color: var(--mcl-danger-2);
+}
+[data-theme="dark"] .mcl-alert-warning .mcl-alert-icon {
+  color: var(--mcl-warning-2);
+}
+[data-theme="dark"] .mcl-alert-info .mcl-alert-icon {
+  color: var(--mcl-info-2);
+}
+.mcl-alert-content {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--mcl-muted);
+}
+.mcl-alert-title {
+  margin: 0 0 2px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--mcl-ink);
+}
+.mcl-alert-content > :last-child {
+  margin-bottom: 0;
+}
+.mcl-alert-close {
+  width: 32px;
+  height: 32px;
+  flex: none;
+  border: 0;
+  border-radius: 12px;
+  background: var(--mcl-bg);
+  box-shadow: var(--mcl-out-xs);
+  color: var(--mcl-muted);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+.mcl-alert-close:active {
+  box-shadow: var(--mcl-in-xs);
+}
+.mcl-alert-close:focus-visible {
+  outline: none;
+  box-shadow: var(--mcl-out-xs), 0 0 0 2.5px var(--mcl-ring);
+}

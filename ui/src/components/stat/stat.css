@@ -1,0 +1,54 @@
+/* MarclayUI — Stat (inset number well) */
+.mcl-stat {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  min-width: 104px;
+  padding: 14px 24px;
+  border-radius: var(--mcl-radius);
+  background: var(--mcl-bg);
+  box-shadow: var(--mcl-in-sm);
+  text-align: center;
+}
+.mcl-stat-value {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.mcl-stat-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--mcl-muted);
+}
+.mcl-stat-primary .mcl-stat-value {
+  color: var(--mcl-primary);
+}
+.mcl-stat-secondary .mcl-stat-value {
+  color: var(--mcl-secondary-deep);
+}
+.mcl-stat-accent .mcl-stat-value {
+  color: var(--mcl-accent-deep);
+}
+.mcl-stat-danger .mcl-stat-value {
+  color: var(--mcl-danger);
+}
+.mcl-stat-info .mcl-stat-value {
+  color: var(--mcl-info);
+}
+[data-theme="dark"] .mcl-stat-primary .mcl-stat-value {
+  color: var(--mcl-primary-2);
+}
+[data-theme="dark"] .mcl-stat-secondary .mcl-stat-value {
+  color: var(--mcl-secondary-2);
+}
+[data-theme="dark"] .mcl-stat-accent .mcl-stat-value {
+  color: var(--mcl-accent-2);
+}
+[data-theme="dark"] .mcl-stat-danger .mcl-stat-value {
+  color: var(--mcl-danger-2);
+}
+[data-theme="dark"] .mcl-stat-info .mcl-stat-value {
+  color: var(--mcl-info-2);
+}

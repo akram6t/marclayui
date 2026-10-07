@@ -1,0 +1,94 @@
+/* MarclayUI — Toasts */
+.mcl-toasts {
+  position: fixed;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: min(380px, calc(100vw - 32px));
+  pointer-events: none;
+}
+.mcl-toasts-top-right {
+  top: 22px;
+  right: 22px;
+}
+.mcl-toasts-top-center {
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.mcl-toasts-bottom-left {
+  bottom: 22px;
+  left: 22px;
+}
+.mcl-toasts-bottom-right {
+  bottom: 22px;
+  right: 22px;
+}
+.mcl-toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 18px;
+  background: var(--mcl-bg);
+  border-radius: var(--mcl-radius);
+  box-shadow: var(--mcl-out);
+  animation: mcl-toast-in 0.3s var(--mcl-ease);
+}
+.mcl-toast-dot {
+  width: 12px;
+  height: 12px;
+  flex: none;
+  margin-top: 5px;
+  border-radius: 50%;
+  background: var(--mcl-info);
+}
+.mcl-toast-success .mcl-toast-dot {
+  background: var(--mcl-success);
+}
+.mcl-toast-danger .mcl-toast-dot {
+  background: var(--mcl-danger);
+}
+.mcl-toast-warning .mcl-toast-dot {
+  background: var(--mcl-accent);
+}
+.mcl-toast-content {
+  flex: 1;
+  min-width: 0;
+}
+.mcl-toast-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--mcl-ink);
+}
+.mcl-toast-message {
+  margin-top: 2px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--mcl-muted);
+}
+.mcl-toast-close {
+  width: 28px;
+  height: 28px;
+  flex: none;
+  border: 0;
+  border-radius: 10px;
+  background: var(--mcl-bg);
+  box-shadow: var(--mcl-out-xs);
+  color: var(--mcl-muted);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+.mcl-toast-close:active {
+  box-shadow: var(--mcl-in-xs);
+}
+@keyframes mcl-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+}

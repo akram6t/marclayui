@@ -1,0 +1,73 @@
+{
+  "name": "marclayui",
+  "version": "0.3.0",
+  "description": "Claymorphism + neumorphism React component library with light/dark theming and runtime color control. Zero runtime dependencies, TypeScript-first, Next.js ready.",
+  "license": "MIT",
+  "author": "Akram (https://github.com/akram6t)",
+  "homepage": "https://github.com/akram6t/marclayui",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/akram6t/marclayui.git"
+  },
+  "keywords": [
+    "react",
+    "ui",
+    "components",
+    "component-library",
+    "claymorphism",
+    "neumorphism",
+    "design-system",
+    "nextjs",
+    "dark-mode",
+    "theming",
+    "css"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./theme-init": {
+      "types": "./dist/theme-init.d.ts",
+      "import": "./dist/theme-init.js",
+      "require": "./dist/theme-init.cjs"
+    },
+    "./styles.css": "./src/styles/index.css",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup && tsup --config tsup.theme.config.ts",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "prepublishOnly": "npm run test && npm run build"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.3",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^6.1.2",
+    "jsdom": "^29.1.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tsup": "^8.5.0",
+    "typescript": "^5",
+    "vitest": "^4.1.11"
+  }
+}

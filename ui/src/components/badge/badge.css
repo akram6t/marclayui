@@ -1,0 +1,106 @@
+/* MarclayUI — Badge / Chip
+   Soft badges = tinted TEXT on an inset well:
+     • light mode: base tone (primary/success/danger/info) or the deepened
+       tone for pale tones (secondary/accent/warning)
+     • dark mode: the bright -2 tone for every variant
+   Solid badges = gradient fill with the -ink text (text ON the tone). */
+.mcl-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  background: var(--mcl-bg);
+  box-shadow: var(--mcl-in-xs);
+  color: var(--mcl-ink);
+}
+.mcl-badge-primary {
+  color: var(--mcl-primary);
+}
+.mcl-badge-secondary {
+  color: var(--mcl-secondary-deep);
+}
+.mcl-badge-accent {
+  color: var(--mcl-accent-deep);
+}
+.mcl-badge-warning {
+  color: var(--mcl-warning-deep);
+}
+.mcl-badge-success {
+  color: var(--mcl-success);
+}
+.mcl-badge-danger {
+  color: var(--mcl-danger);
+}
+.mcl-badge-info {
+  color: var(--mcl-info);
+}
+
+/* dark mode: everything reads from the brighter -2 tones */
+[data-theme="dark"] .mcl-badge-primary {
+  color: var(--mcl-primary-2);
+}
+[data-theme="dark"] .mcl-badge-secondary {
+  color: var(--mcl-secondary-2);
+}
+[data-theme="dark"] .mcl-badge-accent {
+  color: var(--mcl-accent-2);
+}
+[data-theme="dark"] .mcl-badge-warning {
+  color: var(--mcl-warning-2);
+}
+[data-theme="dark"] .mcl-badge-success {
+  color: var(--mcl-success-2);
+}
+[data-theme="dark"] .mcl-badge-danger {
+  color: var(--mcl-danger-2);
+}
+[data-theme="dark"] .mcl-badge-info {
+  color: var(--mcl-info-2);
+}
+
+.mcl-badge-solid,
+.mcl-badge-solid.mcl-badge-neutral {
+  background: var(--mcl-bg);
+  color: var(--mcl-ink);
+  box-shadow: var(--mcl-out-xs), var(--mcl-in-xs);
+}
+.mcl-badge-solid.mcl-badge-primary {
+  background: linear-gradient(145deg, var(--mcl-primary-2), var(--mcl-primary));
+  color: var(--mcl-primary-ink);
+  box-shadow: var(--mcl-out-xs), var(--mcl-clay-p);
+}
+.mcl-badge-solid.mcl-badge-secondary {
+  background: linear-gradient(145deg, var(--mcl-secondary-2), var(--mcl-secondary));
+  color: var(--mcl-secondary-ink);
+  box-shadow: var(--mcl-out-xs), var(--mcl-clay-s);
+}
+.mcl-badge-solid.mcl-badge-accent {
+  background: linear-gradient(145deg, var(--mcl-accent-2), var(--mcl-accent));
+  color: var(--mcl-accent-ink);
+  box-shadow: var(--mcl-out-xs), var(--mcl-clay-a);
+}
+.mcl-badge-solid.mcl-badge-warning {
+  background: linear-gradient(145deg, var(--mcl-warning-2), var(--mcl-warning));
+  color: var(--mcl-warning-ink);
+  box-shadow: var(--mcl-out-xs), var(--mcl-clay-w);
+}
+.mcl-badge-solid.mcl-badge-success {
+  background: linear-gradient(145deg, var(--mcl-success-2), var(--mcl-success));
+  color: var(--mcl-success-ink);
+  box-shadow: var(--mcl-out-xs), var(--mcl-clay-c);
+}
+.mcl-badge-solid.mcl-badge-danger {
+  background: linear-gradient(145deg, var(--mcl-danger-2), var(--mcl-danger));
+  color: var(--mcl-danger-ink);
+  box-shadow: var(--mcl-out-xs), var(--mcl-clay-d);
+}
+.mcl-badge-solid.mcl-badge-info {
+  background: linear-gradient(145deg, var(--mcl-info-2), var(--mcl-info));
+  color: var(--mcl-info-ink);
+  box-shadow: var(--mcl-out-xs), var(--mcl-clay-i);
+}

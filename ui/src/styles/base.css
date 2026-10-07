@@ -1,0 +1,78 @@
+/* MarclayUI — shared base. Add class "mcl-root" to <body> for full-surface theming. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.mcl-root {
+  font-family: var(--mcl-font);
+  background: var(--mcl-bg);
+  color: var(--mcl-ink);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  max-width: 100%;
+}
+
+button {
+  touch-action: manipulation;
+}
+
+/* ---------- themed scrollbars ----------
+   The page scrollbar is themed when <body> carries the mcl-root class;
+   scrollable containers can use .mcl-scroll directly. */
+.mcl-root,
+.mcl-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--mcl-sd) transparent;
+}
+.mcl-root::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+.mcl-scroll::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.mcl-root::-webkit-scrollbar-track,
+.mcl-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.mcl-root::-webkit-scrollbar-thumb,
+.mcl-scroll::-webkit-scrollbar-thumb {
+  background: var(--mcl-sd);
+  border-radius: 999px;
+  border: 3px solid var(--mcl-bg);
+}
+.mcl-root::-webkit-scrollbar-thumb:hover,
+.mcl-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--mcl-muted);
+}
+.mcl-root::-webkit-scrollbar-corner,
+.mcl-scroll::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .mcl-btn,
+  .mcl-theme-toggle,
+  .mcl-switch-knob,
+  .mcl-progress-fill,
+  .mcl-spinner,
+  .mcl-skeleton::after,
+  .mcl-modal-overlay,
+  .mcl-modal,
+  .mcl-toast,
+  .mcl-tabpanel,
+  .mcl-accordion-panel,
+  .mcl-accordion-chevron {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}
