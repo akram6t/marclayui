@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Quicksand, Poppins, Manrope } from "next/font/google";
 import { MarclayProvider, ToastProvider } from "marclayui";
 import { themeInitScript } from "marclayui/theme-init";
+import { Analytics } from "@vercel/analytics/next";
 import "marclayui/styles.css";
 import "./globals.css";
 
@@ -80,6 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <MarclayProvider>
           <ToastProvider>{children}</ToastProvider>
         </MarclayProvider>
+        <Analytics />
       </body>
     </html>
   );
