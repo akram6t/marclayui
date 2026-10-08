@@ -19,6 +19,7 @@
     "build:all": "npm run build:ui && npm run build"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "marclayui": "*",
     "next": "16.3.8",
     "react": "19.2.8",
