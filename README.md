@@ -1,6 +1,18 @@
-# MarclayUI
+<div align="center">
+  <img src="src/app/icon.svg" width="120" alt="MarclayUI Logo" />
+  <h1>MarclayUI</h1>
+  <p><b>Claymorphism + neumorphism React component library</b></p>
+  <p>
+    <a href="https://www.npmjs.com/package/marclayui"><img src="https://img.shields.io/npm/v/marclayui.svg?style=flat-square&color=e0785a" alt="NPM Version" /></a>
+    <img src="https://img.shields.io/npm/l/marclayui.svg?style=flat-square" alt="License" />
+    <img src="https://img.shields.io/badge/dependencies-0-brightgreen.svg?style=flat-square" alt="Zero Dependencies" />
+    <img src="https://img.shields.io/badge/TypeScript-first-blue.svg?style=flat-square" alt="TypeScript" />
+  </p>
+</div>
 
-**Claymorphism + neumorphism React component library** with light/dark theming and react-bootstrap-style runtime color control. Zero runtime dependencies, TypeScript-first, Next.js ready — and no Tailwind anywhere.
+---
+
+**MarclayUI** brings elegant claymorphism and neumorphism to your React applications. It features robust light/dark theming and React-Bootstrap-style runtime color control. Built with pure CSS — zero runtime dependencies, strictly TypeScript-first, Next.js ready, and completely free of Tailwind CSS.
 
 This repository is a **npm workspace** with two parts:
 

@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Badge, Button, Navbar, ThemeMenu } from "marclayui";
 import { CodeBlock } from "@/components/docs/code-block";
-import { GitHubMark } from "@/components/github-mark";
+import { GitHubStars } from "@/components/github-stars";
 import { InstallCommand } from "@/components/landing/install-command";
 import { Reveal } from "@/components/landing/reveal";
 
@@ -89,16 +89,7 @@ export default function HomePage() {
         right={
           <>
             <ThemeMenu />
-            <a
-              className="docs-github"
-              href="https://github.com/akram6t"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="MarclayUI on GitHub"
-            >
-              <GitHubMark />
-              <span>GitHub</span>
-            </a>
+            <GitHubStars />
             <Button href="/docs" size="sm" variant="primary">
               Get started
             </Button>

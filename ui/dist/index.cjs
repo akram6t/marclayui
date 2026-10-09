@@ -57,7 +57,6 @@ __export(index_exports, {
   Progress: () => Progress,
   Radio: () => Radio,
   Range: () => Range,
-  Select: () => Select,
   Skeleton: () => Skeleton,
   Spinner: () => Spinner,
   Stack: () => Stack,
@@ -587,64 +586,25 @@ function Textarea({ label, hint, error, size = "md", block = true, className = "
   return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Chrome, { id: inputId, label, hint, error, block: true, children: el });
 }
 
-// src/components/select/select.tsx
-var import_react5 = __toESM(require("react"));
-var import_jsx_runtime8 = require("react/jsx-runtime");
-function Select({
-  label,
-  hint,
-  error,
-  size = "md",
-  options,
-  placeholder,
-  className = "",
-  id,
-  children,
-  ...rest
-}) {
-  const autoId = import_react5.default.useId();
-  const selectId = id ?? autoId;
-  const select = /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: `mcl-select-shell ${className}`.trim(), children: /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(
-    "select",
-    {
-      id: selectId,
-      className: `mcl-select mcl-select-${size}${error ? " mcl-select-invalid" : ""}`,
-      "aria-invalid": error ? true : void 0,
-      ...rest,
-      children: [
-        placeholder && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("option", { value: "", disabled: true, children: placeholder }),
-        options?.map((o) => /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("option", { value: o.value, children: o.label }, o.value)),
-        children
-      ]
-    }
-  ) });
-  if (!label && !hint && !error) return select;
-  return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "mcl-field", children: [
-    label && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("label", { className: "mcl-label", htmlFor: selectId, children: label }),
-    select,
-    error ? /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "mcl-hint mcl-hint-error", role: "alert", children: error }) : hint ? /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "mcl-hint", children: hint }) : null
-  ] });
-}
-
 // src/components/checks/checks.tsx
-var import_react6 = require("react");
-var import_jsx_runtime9 = require("react/jsx-runtime");
+var import_react5 = require("react");
+var import_jsx_runtime8 = require("react/jsx-runtime");
 function withLabel(input, label) {
   if (label === void 0 || label === null) return input;
-  return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("label", { className: "mcl-check", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("label", { className: "mcl-check", children: [
     input,
-    /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "mcl-check-label", children: label })
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "mcl-check-label", children: label })
   ] });
 }
 function Checkbox({ label, indeterminate = false, className = "", ...rest }) {
-  const inputRef = (0, import_react6.useRef)(null);
-  (0, import_react6.useEffect)(() => {
+  const inputRef = (0, import_react5.useRef)(null);
+  (0, import_react5.useEffect)(() => {
     if (inputRef.current) inputRef.current.indeterminate = indeterminate;
   }, [indeterminate]);
   return withLabel(
-    /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(import_jsx_runtime9.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("input", { ref: inputRef, type: "checkbox", className: `mcl-check-input ${className}`.trim(), ...rest }),
-      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "mcl-check-box", "aria-hidden": "true" })
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(import_jsx_runtime8.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("input", { ref: inputRef, type: "checkbox", className: `mcl-check-input ${className}`.trim(), ...rest }),
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "mcl-check-box", "aria-hidden": "true" })
     ] }),
     label
   );
@@ -660,13 +620,13 @@ function CheckboxGroup({
   disabled = false,
   className = ""
 }) {
-  const [inner, setInner] = (0, import_react6.useState)(defaultValue);
-  const allRef = (0, import_react6.useRef)(null);
+  const [inner, setInner] = (0, import_react5.useState)(defaultValue);
+  const allRef = (0, import_react5.useRef)(null);
   const selected = value ?? inner;
   const enabled = options.filter((o) => !o.disabled).map((o) => o.value);
   const allOn = enabled.length > 0 && enabled.every((v) => selected.includes(v));
   const someOn = enabled.some((v) => selected.includes(v));
-  (0, import_react6.useEffect)(() => {
+  (0, import_react5.useEffect)(() => {
     if (allRef.current) allRef.current.indeterminate = someOn && !allOn;
   }, [someOn, allOn]);
   const commit = (next) => {
@@ -679,16 +639,16 @@ function CheckboxGroup({
   const toggleAll = () => {
     commit(allOn ? selected.filter((v) => !enabled.includes(v)) : Array.from(/* @__PURE__ */ new Set([...selected, ...enabled])));
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(
     "div",
     {
       className: `mcl-check-group ${className}`.trim(),
       role: "group",
       "aria-label": typeof label === "string" ? label : void 0,
       children: [
-        label && /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "mcl-label", children: label }),
-        selectAll && /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("label", { className: `mcl-check mcl-check-group-all${disabled ? " mcl-check-disabled" : ""}`, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+        label && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "mcl-label", children: label }),
+        selectAll && /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("label", { className: `mcl-check mcl-check-group-all${disabled ? " mcl-check-disabled" : ""}`, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
             "input",
             {
               ref: allRef,
@@ -699,11 +659,11 @@ function CheckboxGroup({
               onChange: toggleAll
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "mcl-check-box", "aria-hidden": "true" }),
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "mcl-check-label", children: selectAllLabel })
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "mcl-check-box", "aria-hidden": "true" }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "mcl-check-label", children: selectAllLabel })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "mcl-check-group-items", children: options.map((o) => /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("label", { className: `mcl-check${o.disabled || disabled ? " mcl-check-disabled" : ""}`, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "mcl-check-group-items", children: options.map((o) => /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("label", { className: `mcl-check${o.disabled || disabled ? " mcl-check-disabled" : ""}`, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
             "input",
             {
               type: "checkbox",
@@ -713,8 +673,8 @@ function CheckboxGroup({
               onChange: () => toggle(o.value)
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "mcl-check-box", "aria-hidden": "true" }),
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "mcl-check-label", children: o.label })
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "mcl-check-box", "aria-hidden": "true" }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "mcl-check-label", children: o.label })
         ] }, o.value)) })
       ]
     }
@@ -722,17 +682,17 @@ function CheckboxGroup({
 }
 function Radio({ label, className = "", ...rest }) {
   return withLabel(
-    /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(import_jsx_runtime9.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("input", { type: "radio", className: `mcl-check-input ${className}`.trim(), ...rest }),
-      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "mcl-check-box mcl-radio-box", "aria-hidden": "true" })
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(import_jsx_runtime8.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("input", { type: "radio", className: `mcl-check-input ${className}`.trim(), ...rest }),
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "mcl-check-box mcl-radio-box", "aria-hidden": "true" })
     ] }),
     label
   );
 }
 function Switch({ label, className = "", ...rest }) {
   return withLabel(
-    /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(import_jsx_runtime9.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(import_jsx_runtime8.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
         "input",
         {
           type: "checkbox",
@@ -741,15 +701,15 @@ function Switch({ label, className = "", ...rest }) {
           ...rest
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "mcl-switch-track", "aria-hidden": "true", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "mcl-switch-knob" }) })
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "mcl-switch-track", "aria-hidden": "true", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "mcl-switch-knob" }) })
     ] }),
     label
   );
 }
 
 // src/components/dropdown/dropdown.tsx
-var import_react7 = require("react");
-var import_jsx_runtime10 = require("react/jsx-runtime");
+var import_react6 = require("react");
+var import_jsx_runtime9 = require("react/jsx-runtime");
 function Dropdown({
   items,
   value,
@@ -764,13 +724,13 @@ function Dropdown({
   disabled = false,
   className = ""
 }) {
-  const [open, setOpen] = (0, import_react7.useState)(false);
-  const [inner, setInner] = (0, import_react7.useState)(defaultValue);
-  const [active, setActive] = (0, import_react7.useState)(0);
-  const [flip, setFlip] = (0, import_react7.useState)({ up: false, left: false });
-  const shellRef = (0, import_react7.useRef)(null);
-  const menuRef = (0, import_react7.useRef)(null);
-  const triggerRef = (0, import_react7.useRef)(null);
+  const [open, setOpen] = (0, import_react6.useState)(false);
+  const [inner, setInner] = (0, import_react6.useState)(defaultValue);
+  const [active, setActive] = (0, import_react6.useState)(0);
+  const [flip, setFlip] = (0, import_react6.useState)({ up: false, left: false });
+  const shellRef = (0, import_react6.useRef)(null);
+  const menuRef = (0, import_react6.useRef)(null);
+  const triggerRef = (0, import_react6.useRef)(null);
   const current = value ?? inner;
   const selectedValues = multiple ? Array.isArray(current) ? current : [] : [];
   const singleValue = !multiple && !Array.isArray(current) ? current : void 0;
@@ -785,7 +745,7 @@ function Dropdown({
     triggerText = labelFor(singleValue) ?? singleValue;
   }
   const hasSelection = multiple ? selectedValues.length > 0 : singleValue !== void 0 && singleValue !== "";
-  (0, import_react7.useEffect)(() => {
+  (0, import_react6.useEffect)(() => {
     if (!open) return;
     const onDown = (e) => {
       if (shellRef.current && !shellRef.current.contains(e.target)) {
@@ -796,7 +756,7 @@ function Dropdown({
     document.addEventListener("mousedown", onDown);
     return () => document.removeEventListener("mousedown", onDown);
   }, [open]);
-  (0, import_react7.useEffect)(() => {
+  (0, import_react6.useEffect)(() => {
     if (!open) return;
     const firstSelected = multiple ? items.findIndex((i) => selectedValues.includes(i.value)) : items.findIndex((i) => i.value === singleValue);
     const firstEnabled = items.findIndex((i) => !i.disabled);
@@ -809,7 +769,7 @@ function Dropdown({
     }, 0);
     return () => window.clearTimeout(t);
   }, [open]);
-  (0, import_react7.useEffect)(() => {
+  (0, import_react6.useEffect)(() => {
     if (!open) return;
     const t = window.setTimeout(() => {
       const trig = triggerRef.current;
@@ -882,15 +842,15 @@ function Dropdown({
       setOpen(true);
     }
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: `mcl-field${block ? " mcl-field-block" : ""} ${className}`.trim(), children: [
-    label && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "mcl-label", children: label }),
-    /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: `mcl-field${block ? " mcl-field-block" : ""} ${className}`.trim(), children: [
+    label && /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "mcl-label", children: label }),
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(
       "div",
       {
         ref: shellRef,
         className: `mcl-dropdown-shell${block ? " mcl-dropdown-block" : ""}`,
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(
             "button",
             {
               ref: triggerRef,
@@ -902,12 +862,12 @@ function Dropdown({
               onClick: () => setOpen((o) => !o),
               onKeyDown: onTriggerKeyDown,
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: `mcl-dropdown-value${hasSelection ? "" : " mcl-dropdown-placeholder"}`, children: triggerText }),
-                /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "mcl-dropdown-chevron", "aria-hidden": "true" })
+                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: `mcl-dropdown-value${hasSelection ? "" : " mcl-dropdown-placeholder"}`, children: triggerText }),
+                /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "mcl-dropdown-chevron", "aria-hidden": "true" })
               ]
             }
           ),
-          open && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+          open && /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
             "div",
             {
               ref: menuRef,
@@ -924,7 +884,7 @@ function Dropdown({
               onKeyDown: onMenuKeyDown,
               children: items.map((it, i) => {
                 const selected = multiple ? selectedValues.includes(it.value) : singleValue === it.value;
-                return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(
+                return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(
                   "div",
                   {
                     role: "option",
@@ -941,9 +901,9 @@ function Dropdown({
                       if (!it.disabled) commit(it.value);
                     },
                     children: [
-                      multiple && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "mcl-dropdown-check", "aria-hidden": "true" }),
-                      /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "mcl-dropdown-item-label", children: it.label }),
-                      !multiple && selected && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "mcl-dropdown-tick", "aria-hidden": "true", children: "\u2713" })
+                      multiple && /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "mcl-dropdown-check", "aria-hidden": "true" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "mcl-dropdown-item-label", children: it.label }),
+                      !multiple && selected && /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "mcl-dropdown-tick", "aria-hidden": "true", children: "\u2713" })
                     ]
                   },
                   it.value
@@ -954,13 +914,13 @@ function Dropdown({
         ]
       }
     ),
-    hint && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "mcl-hint", children: hint })
+    hint && /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "mcl-hint", children: hint })
   ] });
 }
 
 // src/components/range/range.tsx
-var import_react8 = __toESM(require("react"));
-var import_jsx_runtime11 = require("react/jsx-runtime");
+var import_react7 = __toESM(require("react"));
+var import_jsx_runtime10 = require("react/jsx-runtime");
 function Range({
   label,
   hint,
@@ -972,14 +932,14 @@ function Range({
   id,
   ...rest
 }) {
-  const autoId = import_react8.default.useId();
+  const autoId = import_react7.default.useId();
   const inputId = id ?? autoId;
   const isControlled = value !== void 0;
-  const [inner, setInner] = (0, import_react8.useState)(
+  const [inner, setInner] = (0, import_react7.useState)(
     () => value !== void 0 ? String(value) : defaultValue !== void 0 ? String(defaultValue) : "0"
   );
   const current = isControlled ? String(value) : inner;
-  const input = /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+  const input = /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
     "input",
     {
       id: inputId,
@@ -993,22 +953,22 @@ function Range({
       ...rest
     }
   );
-  const field = /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "mcl-field", children: [
-    label && /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("label", { className: "mcl-range-head", htmlFor: inputId, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "mcl-label", children: label }),
-      showValue && /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "mcl-range-value", children: current })
+  const field = /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "mcl-field", children: [
+    label && /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("label", { className: "mcl-range-head", htmlFor: inputId, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "mcl-label", children: label }),
+      showValue && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "mcl-range-value", children: current })
     ] }),
     input,
-    hint && /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "mcl-hint", children: hint })
+    hint && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "mcl-hint", children: hint })
   ] });
   if (!label && !hint) return input;
   return field;
 }
 
 // src/components/badge/badge.tsx
-var import_jsx_runtime12 = require("react/jsx-runtime");
+var import_jsx_runtime11 = require("react/jsx-runtime");
 function Badge({ variant = "neutral", solid = false, className = "", ...rest }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
     "span",
     {
       className: `mcl-badge mcl-badge-${variant}${solid ? " mcl-badge-solid" : ""} ${className}`.trim(),
@@ -1018,7 +978,7 @@ function Badge({ variant = "neutral", solid = false, className = "", ...rest }) 
 }
 
 // src/components/alert/alert.tsx
-var import_jsx_runtime13 = require("react/jsx-runtime");
+var import_jsx_runtime12 = require("react/jsx-runtime");
 var DEFAULT_ICONS = {
   success: "\u2713",
   danger: "\u2715",
@@ -1034,18 +994,18 @@ function Alert({
   children,
   ...rest
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: `mcl-alert mcl-alert-${variant} ${className}`.trim(), role: "alert", ...rest, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "mcl-alert-icon", "aria-hidden": "true", children: icon ?? DEFAULT_ICONS[variant] }),
-    /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "mcl-alert-content", children: [
-      title && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { className: "mcl-alert-title", children: title }),
+  return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: `mcl-alert mcl-alert-${variant} ${className}`.trim(), role: "alert", ...rest, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: "mcl-alert-icon", "aria-hidden": "true", children: icon ?? DEFAULT_ICONS[variant] }),
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "mcl-alert-content", children: [
+      title && /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "mcl-alert-title", children: title }),
       children
     ] }),
-    onClose && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("button", { type: "button", className: "mcl-alert-close", onClick: onClose, "aria-label": "Dismiss", children: "\u2715" })
+    onClose && /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("button", { type: "button", className: "mcl-alert-close", onClick: onClose, "aria-label": "Dismiss", children: "\u2715" })
   ] });
 }
 
 // src/components/avatar/avatar.tsx
-var import_jsx_runtime14 = require("react/jsx-runtime");
+var import_jsx_runtime13 = require("react/jsx-runtime");
 function initialsOf(name) {
   const parts = name.trim().split(/\s+/).slice(0, 2);
   return parts.map((p) => p[0]?.toUpperCase() ?? "").join("");
@@ -1062,7 +1022,7 @@ function Avatar({
   ...rest
 }) {
   const label = alt ?? (name ? `${name}'s avatar` : "avatar");
-  return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
     "span",
     {
       className: `mcl-avatar mcl-avatar-${size}${gradient ? " mcl-avatar-gradient" : ""} ${className}`.trim(),
@@ -1070,18 +1030,18 @@ function Avatar({
       "aria-label": label,
       ...rest,
       children: [
-        src ? /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("img", { src, alt: "", className: "mcl-avatar-img", loading: "lazy", decoding: "async" }) : children ?? initialsOf(name ?? "??") ?? "",
-        status && /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: `mcl-avatar-status mcl-avatar-status-${status}`, "aria-hidden": "true" })
+        src ? /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("img", { src, alt: "", className: "mcl-avatar-img", loading: "lazy", decoding: "async" }) : children ?? initialsOf(name ?? "??") ?? "",
+        status && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: `mcl-avatar-status mcl-avatar-status-${status}`, "aria-hidden": "true" })
       ]
     }
   );
 }
 function AvatarGroup({ className = "", children, ...rest }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: `mcl-avatar-group ${className}`.trim(), ...rest, children });
+  return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: `mcl-avatar-group ${className}`.trim(), ...rest, children });
 }
 
 // src/components/progress/progress.tsx
-var import_jsx_runtime15 = require("react/jsx-runtime");
+var import_jsx_runtime14 = require("react/jsx-runtime");
 function Progress({
   value = 0,
   max = 100,
@@ -1093,7 +1053,7 @@ function Progress({
   className = ""
 }) {
   const pct = Math.max(0, Math.min(100, value / max * 100));
-  return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(
     "div",
     {
       className: `mcl-progress mcl-progress-${size} ${className}`.trim(),
@@ -1102,11 +1062,11 @@ function Progress({
       "aria-valuemax": max,
       "aria-valuenow": indeterminate ? void 0 : Math.round(pct),
       children: [
-        (label || showValue) && /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "mcl-progress-head", children: [
-          label && /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { children: label }),
-          showValue && /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: "mcl-progress-value", children: indeterminate ? "\u2026" : `${Math.round(pct)}%` })
+        (label || showValue) && /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "mcl-progress-head", children: [
+          label && /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { children: label }),
+          showValue && /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { className: "mcl-progress-value", children: indeterminate ? "\u2026" : `${Math.round(pct)}%` })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "mcl-progress-track", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "mcl-progress-track", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
           "span",
           {
             className: `mcl-progress-fill mcl-progress-fill-${tone}${indeterminate ? " mcl-progress-fill-indeterminate" : ""}`,
@@ -1119,13 +1079,13 @@ function Progress({
 }
 
 // src/components/spinner/spinner.tsx
-var import_jsx_runtime16 = require("react/jsx-runtime");
+var import_jsx_runtime15 = require("react/jsx-runtime");
 function Spinner({ size = "md", className = "" }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: `mcl-spinner mcl-spinner-${size} ${className}`.trim(), role: "status", "aria-label": "Loading" });
+  return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: `mcl-spinner mcl-spinner-${size} ${className}`.trim(), role: "status", "aria-label": "Loading" });
 }
 
 // src/components/skeleton/skeleton.tsx
-var import_jsx_runtime17 = require("react/jsx-runtime");
+var import_jsx_runtime16 = require("react/jsx-runtime");
 function Skeleton({ variant = "text", width, height, count = 1, className = "" }) {
   const lines = variant === "text" ? Math.max(1, count) : 1;
   const style = (last) => ({
@@ -1134,7 +1094,7 @@ function Skeleton({ variant = "text", width, height, count = 1, className = "" }
     ...variant === "text" && count > 1 && last ? { width: "62%" } : null
   });
   if (lines === 1) {
-    return /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
       "span",
       {
         className: `mcl-skeleton mcl-skeleton-${variant} ${className}`.trim(),
@@ -1143,13 +1103,13 @@ function Skeleton({ variant = "text", width, height, count = 1, className = "" }
       }
     );
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: `mcl-skeleton-lines ${className}`.trim(), "aria-hidden": "true", children: Array.from({ length: lines }, (_, i) => /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "mcl-skeleton mcl-skeleton-text", style: style(i === lines - 1) }, i)) });
+  return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: `mcl-skeleton-lines ${className}`.trim(), "aria-hidden": "true", children: Array.from({ length: lines }, (_, i) => /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "mcl-skeleton mcl-skeleton-text", style: style(i === lines - 1) }, i)) });
 }
 
 // src/components/modal/modal.tsx
-var import_react9 = require("react");
+var import_react8 = require("react");
 var import_react_dom = require("react-dom");
-var import_jsx_runtime18 = require("react/jsx-runtime");
+var import_jsx_runtime17 = require("react/jsx-runtime");
 var FOCUSABLE = 'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
 function Modal({
   open,
@@ -1162,12 +1122,12 @@ function Modal({
   children,
   className = ""
 }) {
-  const [mounted, setMounted] = (0, import_react9.useState)(false);
-  const panelRef = (0, import_react9.useRef)(null);
-  const lastFocusedRef = (0, import_react9.useRef)(null);
-  const titleId = (0, import_react9.useId)();
-  (0, import_react9.useEffect)(() => setMounted(true), []);
-  (0, import_react9.useEffect)(() => {
+  const [mounted, setMounted] = (0, import_react8.useState)(false);
+  const panelRef = (0, import_react8.useRef)(null);
+  const lastFocusedRef = (0, import_react8.useRef)(null);
+  const titleId = (0, import_react8.useId)();
+  (0, import_react8.useEffect)(() => setMounted(true), []);
+  (0, import_react8.useEffect)(() => {
     if (!open) return;
     lastFocusedRef.current = document.activeElement;
     const onKey = (e) => {
@@ -1205,14 +1165,14 @@ function Modal({
   };
   if (!open || !mounted) return null;
   return (0, import_react_dom.createPortal)(
-    /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
       "div",
       {
         className: "mcl-modal-overlay",
         onMouseDown: (e) => {
           if (e.target === e.currentTarget && closeOnBackdrop) onClose();
         },
-        children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
           "div",
           {
             ref: panelRef,
@@ -1223,12 +1183,12 @@ function Modal({
             tabIndex: -1,
             onKeyDown: trapFocus,
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "mcl-modal-header", children: [
-                title ? /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("h3", { id: titleId, className: "mcl-modal-title", children: title }) : /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", {}),
-                /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("button", { type: "button", className: "mcl-modal-close", onClick: onClose, "aria-label": "Close dialog", children: "\u2715" })
+              /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "mcl-modal-header", children: [
+                title ? /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("h3", { id: titleId, className: "mcl-modal-title", children: title }) : /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", {}),
+                /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("button", { type: "button", className: "mcl-modal-close", onClick: onClose, "aria-label": "Close dialog", children: "\u2715" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "mcl-modal-body mcl-scroll", children }),
-              footer && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "mcl-modal-footer", children: footer })
+              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "mcl-modal-body mcl-scroll", children }),
+              footer && /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "mcl-modal-footer", children: footer })
             ]
           }
         )
@@ -1239,19 +1199,19 @@ function Modal({
 }
 
 // src/components/tooltip/tooltip.tsx
-var import_jsx_runtime19 = require("react/jsx-runtime");
+var import_jsx_runtime18 = require("react/jsx-runtime");
 function Tooltip({ label, placement = "top", className = "", children }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("span", { className: `mcl-tooltip mcl-tooltip-${placement} ${className}`.trim(), "data-mcl-tooltip": label, children });
+  return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("span", { className: `mcl-tooltip mcl-tooltip-${placement} ${className}`.trim(), "data-mcl-tooltip": label, children });
 }
 
 // src/components/tabs/tabs.tsx
-var import_react10 = require("react");
-var import_jsx_runtime20 = require("react/jsx-runtime");
+var import_react9 = require("react");
+var import_jsx_runtime19 = require("react/jsx-runtime");
 function Tabs({ items, value, onChange, className = "" }) {
-  const uid = (0, import_react10.useId)();
-  const [inner, setInner] = (0, import_react10.useState)(0);
+  const uid = (0, import_react9.useId)();
+  const [inner, setInner] = (0, import_react9.useState)(0);
   const active = value ?? inner;
-  const tabRefs = (0, import_react10.useRef)([]);
+  const tabRefs = (0, import_react9.useRef)([]);
   const select = (i) => {
     if (items[i]?.disabled) return;
     setInner(i);
@@ -1271,8 +1231,8 @@ function Tabs({ items, value, onChange, className = "" }) {
     }
   };
   const current = items[active];
-  return /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: `mcl-tabs ${className}`.trim(), children: [
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "mcl-tablist", role: "tablist", "aria-label": "Tabs", onKeyDown, children: items.map((it, i) => /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: `mcl-tabs ${className}`.trim(), children: [
+    /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "mcl-tablist", role: "tablist", "aria-label": "Tabs", onKeyDown, children: items.map((it, i) => /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
       "button",
       {
         ref: (el) => {
@@ -1291,7 +1251,7 @@ function Tabs({ items, value, onChange, className = "" }) {
       },
       it.key
     )) }),
-    current && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+    current && /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
       "div",
       {
         role: "tabpanel",
@@ -1306,19 +1266,19 @@ function Tabs({ items, value, onChange, className = "" }) {
 }
 
 // src/components/accordion/accordion.tsx
-var import_react11 = require("react");
-var import_jsx_runtime21 = require("react/jsx-runtime");
+var import_react10 = require("react");
+var import_jsx_runtime20 = require("react/jsx-runtime");
 function Accordion({ items, defaultOpen = -1, exclusive = true, className = "" }) {
-  const uid = (0, import_react11.useId)();
-  const [openSet, setOpenSet] = (0, import_react11.useState)(
+  const uid = (0, import_react10.useId)();
+  const [openSet, setOpenSet] = (0, import_react10.useState)(
     () => new Set(defaultOpen >= 0 ? [defaultOpen] : [])
   );
-  const panelRefs = (0, import_react11.useRef)([]);
-  const [heights, setHeights] = (0, import_react11.useState)([]);
+  const panelRefs = (0, import_react10.useRef)([]);
+  const [heights, setHeights] = (0, import_react10.useState)([]);
   const measure = () => {
     setHeights(items.map((_, i) => panelRefs.current[i]?.scrollHeight ?? 0));
   };
-  (0, import_react11.useEffect)(() => {
+  (0, import_react10.useEffect)(() => {
     measure();
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
@@ -1335,10 +1295,10 @@ function Accordion({ items, defaultOpen = -1, exclusive = true, className = "" }
       return next;
     });
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: `mcl-accordion ${className}`.trim(), children: items.map((item, i) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: `mcl-accordion ${className}`.trim(), children: items.map((item, i) => {
     const open = openSet.has(i);
-    return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: `mcl-accordion-item${open ? " mcl-accordion-item-open" : ""}`, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: `mcl-accordion-item${open ? " mcl-accordion-item-open" : ""}`, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(
         "button",
         {
           type: "button",
@@ -1347,12 +1307,12 @@ function Accordion({ items, defaultOpen = -1, exclusive = true, className = "" }
           "aria-controls": `mcl-acc-${uid}-${i}`,
           onClick: () => toggle(i),
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { children: item.title }),
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "mcl-accordion-chevron", "aria-hidden": "true", children: "\u25BE" })
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { children: item.title }),
+            /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: "mcl-accordion-chevron", "aria-hidden": "true", children: "\u25BE" })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
         "div",
         {
           id: `mcl-acc-${uid}-${i}`,
@@ -1362,7 +1322,7 @@ function Accordion({ items, defaultOpen = -1, exclusive = true, className = "" }
           className: "mcl-accordion-panel",
           style: { maxHeight: open ? heights[i] || 999 : 0 },
           role: "region",
-          children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "mcl-accordion-panel-inner", children: item.content })
+          children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "mcl-accordion-panel-inner", children: item.content })
         }
       )
     ] }, i);
@@ -1370,14 +1330,14 @@ function Accordion({ items, defaultOpen = -1, exclusive = true, className = "" }
 }
 
 // src/components/toast/toast.tsx
-var import_react12 = require("react");
-var import_jsx_runtime22 = require("react/jsx-runtime");
-var ToastContext = (0, import_react12.createContext)(null);
+var import_react11 = require("react");
+var import_jsx_runtime21 = require("react/jsx-runtime");
+var ToastContext = (0, import_react11.createContext)(null);
 function ToastProvider({ children, placement = "bottom-right" }) {
-  const [toasts, setToasts] = (0, import_react12.useState)([]);
-  const idRef = (0, import_react12.useRef)(0);
-  const timersRef = (0, import_react12.useRef)(/* @__PURE__ */ new Map());
-  const dismiss = (0, import_react12.useCallback)((id) => {
+  const [toasts, setToasts] = (0, import_react11.useState)([]);
+  const idRef = (0, import_react11.useRef)(0);
+  const timersRef = (0, import_react11.useRef)(/* @__PURE__ */ new Map());
+  const dismiss = (0, import_react11.useCallback)((id) => {
     const timer = timersRef.current.get(id);
     if (timer !== void 0) {
       window.clearTimeout(timer);
@@ -1385,7 +1345,7 @@ function ToastProvider({ children, placement = "bottom-right" }) {
     }
     setToasts((list) => list.filter((t) => t.id !== id));
   }, []);
-  const toast = (0, import_react12.useCallback)(
+  const toast = (0, import_react11.useCallback)(
     (o) => {
       const id = ++idRef.current;
       setToasts((list) => [...list, { ...o, id }].slice(-4));
@@ -1397,42 +1357,42 @@ function ToastProvider({ children, placement = "bottom-right" }) {
     },
     [dismiss]
   );
-  (0, import_react12.useEffect)(
+  (0, import_react11.useEffect)(
     () => () => {
       timersRef.current.forEach((timer) => window.clearTimeout(timer));
       timersRef.current.clear();
     },
     []
   );
-  return /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)(ToastContext.Provider, { value: { toast, dismiss }, children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(ToastContext.Provider, { value: { toast, dismiss }, children: [
     children,
-    /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: `mcl-toasts mcl-toasts-${placement}`, "aria-live": "polite", children: toasts.map((t) => /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(ToastCard, { item: t, onClose: () => dismiss(t.id) }, t.id)) })
+    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: `mcl-toasts mcl-toasts-${placement}`, "aria-live": "polite", children: toasts.map((t) => /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(ToastCard, { item: t, onClose: () => dismiss(t.id) }, t.id)) })
   ] });
 }
 function ToastCard({ item, onClose }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: `mcl-toast mcl-toast-${item.variant ?? "info"}`, role: "status", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { className: "mcl-toast-dot", "aria-hidden": "true" }),
-    /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "mcl-toast-content", children: [
-      item.title && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "mcl-toast-title", children: item.title }),
-      item.message && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "mcl-toast-message", children: item.message })
+  return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: `mcl-toast mcl-toast-${item.variant ?? "info"}`, role: "status", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "mcl-toast-dot", "aria-hidden": "true" }),
+    /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "mcl-toast-content", children: [
+      item.title && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "mcl-toast-title", children: item.title }),
+      item.message && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "mcl-toast-message", children: item.message })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("button", { type: "button", className: "mcl-toast-close", onClick: onClose, "aria-label": "Dismiss notification", children: "\u2715" })
+    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("button", { type: "button", className: "mcl-toast-close", onClick: onClose, "aria-label": "Dismiss notification", children: "\u2715" })
   ] });
 }
 function useToast() {
-  const ctx = (0, import_react12.useContext)(ToastContext);
+  const ctx = (0, import_react11.useContext)(ToastContext);
   if (!ctx) throw new Error("useToast must be used inside <ToastProvider>.");
   return ctx;
 }
 
 // src/components/navbar/navbar.tsx
-var import_react13 = require("react");
-var import_jsx_runtime23 = require("react/jsx-runtime");
+var import_react12 = require("react");
+var import_jsx_runtime22 = require("react/jsx-runtime");
 function Navbar({ brand, links = [], activeHref, right, sticky = true, className = "" }) {
-  const [open, setOpen] = (0, import_react13.useState)(false);
-  return /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("nav", { className: `mcl-navbar${sticky ? " mcl-navbar-sticky" : ""} ${className}`.trim(), children: /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "mcl-navbar-inner", children: [
-    brand && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("a", { className: "mcl-navbar-brand", href: "/", children: brand }),
-    links.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
+  const [open, setOpen] = (0, import_react12.useState)(false);
+  return /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("nav", { className: `mcl-navbar${sticky ? " mcl-navbar-sticky" : ""} ${className}`.trim(), children: /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "mcl-navbar-inner", children: [
+    brand && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("a", { className: "mcl-navbar-brand", href: "/", children: brand }),
+    links.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(
       "button",
       {
         type: "button",
@@ -1440,10 +1400,10 @@ function Navbar({ brand, links = [], activeHref, right, sticky = true, className
         "aria-expanded": open,
         "aria-label": "Toggle menu",
         onClick: () => setOpen((o) => !o),
-        children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: "mcl-navbar-burger", "aria-hidden": "true" })
+        children: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { className: "mcl-navbar-burger", "aria-hidden": "true" })
       }
     ),
-    links.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("ul", { className: `mcl-navbar-links${open ? " mcl-navbar-open" : ""}`, children: links.map((l) => /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
+    links.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("ul", { className: `mcl-navbar-links${open ? " mcl-navbar-open" : ""}`, children: links.map((l) => /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(
       "a",
       {
         href: l.href,
@@ -1453,26 +1413,26 @@ function Navbar({ brand, links = [], activeHref, right, sticky = true, className
         children: l.label
       }
     ) }, l.href)) }),
-    right && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "mcl-navbar-right", children: right })
+    right && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "mcl-navbar-right", children: right })
   ] }) });
 }
 
 // src/components/stat/stat.tsx
-var import_jsx_runtime24 = require("react/jsx-runtime");
+var import_jsx_runtime23 = require("react/jsx-runtime");
 function Stat({ value, label, tone = "primary", className = "" }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: `mcl-stat mcl-stat-${tone} ${className}`.trim(), children: [
-    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("b", { className: "mcl-stat-value", children: value }),
-    label && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "mcl-stat-label", children: label })
+  return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: `mcl-stat mcl-stat-${tone} ${className}`.trim(), children: [
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("b", { className: "mcl-stat-value", children: value }),
+    label && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: "mcl-stat-label", children: label })
   ] });
 }
 
 // src/components/divider/divider.tsx
-var import_jsx_runtime25 = require("react/jsx-runtime");
+var import_jsx_runtime24 = require("react/jsx-runtime");
 function Divider({ orientation = "horizontal", label, className = "", ...rest }) {
   if (label !== void 0 && label !== null) {
-    return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: `mcl-divider-label ${className}`.trim(), role: "separator", ...rest, children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: "mcl-divider-label-text", children: label }) });
+    return /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: `mcl-divider-label ${className}`.trim(), role: "separator", ...rest, children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "mcl-divider-label-text", children: label }) });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
     "div",
     {
       className: `mcl-divider mcl-divider-${orientation} ${className}`.trim(),
@@ -1483,7 +1443,7 @@ function Divider({ orientation = "horizontal", label, className = "", ...rest })
 }
 
 // src/components/stack/stack.tsx
-var import_jsx_runtime26 = require("react/jsx-runtime");
+var import_jsx_runtime25 = require("react/jsx-runtime");
 function Stack({
   direction = "column",
   gap = "md",
@@ -1502,7 +1462,7 @@ function Stack({
     justify ? `mcl-stack-justify-${justify}` : "",
     className
   ].filter(Boolean).join(" ");
-  return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("div", { className: cls, ...rest });
+  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: cls, ...rest });
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
@@ -1532,7 +1492,6 @@ function Stack({
   Progress,
   Radio,
   Range,
-  Select,
   Skeleton,
   Spinner,
   Stack,

@@ -14,7 +14,7 @@ import {
   Modal,
   Progress,
   Radio,
-  Select,
+  Dropdown,
   Skeleton,
   Spinner,
   Switch,
@@ -60,10 +60,10 @@ function FormsCard() {
       <p className="home-show-desc">Inset clay wells with labels, hints and validation states.</p>
       <div style={{ display: "grid", gap: 16 }}>
         <Input label="Full name" placeholder="Jane Developer" hint="We never share it." />
-        <Select
+        <Dropdown
           label="Role"
           placeholder="Choose one…"
-          options={[
+          items={[
             { value: "dev", label: "Developer" },
             { value: "des", label: "Designer" },
             { value: "pm", label: "Product manager" },

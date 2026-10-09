@@ -13,7 +13,7 @@ import {
   PRESETS,
   Progress,
   Range,
-  Select,
+  Dropdown,
   useTheme,
   type ColorOverrides,
 } from "marclayui";
@@ -200,12 +200,12 @@ ${Object.entries(current)
         <div className="docs-pg-section">
           <span className="docs-pg-label">SHAPE &amp; TYPE</span>
           <Range label="Corner radius" showValue min={8} max={32} value={radius} onChange={(e) => applyRadius(Number(e.target.value))} />
-          <Select
+          <Dropdown
             label="Typeface"
             size="sm"
             value={font}
-            options={FONT_OPTIONS}
-            onChange={(e) => applyFont(e.target.value)}
+            items={FONT_OPTIONS}
+            onChange={(v) => applyFont(v as string)}
           />
         </div>
 

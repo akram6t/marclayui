@@ -20,7 +20,6 @@ const COMPONENTS: Array<[string, string]> = [
   ["progress", "Animated clay progress wells"],
   ["radio", "Round selects grouped by name"],
   ["range", "Styled native slider"],
-  ["select", "Native select in a clay well"],
   ["skeleton", "Shimmering placeholders"],
   ["spinner", "Circular clay loader"],
   ["stack", "Flex layout helpers with named gaps"],

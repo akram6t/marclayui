@@ -549,8 +549,21 @@ body {
 }
 @media (max-width: 640px) {
   .docs-search-btn-label,
-  .docs-search-btn .mcl-kbd {
+  .docs-search-btn .mcl-kbd,
+  .docs-version,
+  .docs-github span {
     display: none;
+  }
+  .docs-topbar {
+    padding: 12px 14px;
+    gap: 8px;
+  }
+  .docs-topbar-right {
+    gap: 8px;
+  }
+  .docs-github {
+    padding: 10px;
+    border-radius: 12px;
   }
 }
 

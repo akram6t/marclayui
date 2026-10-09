@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Kbd, ThemeMenu } from "marclayui";
 import { DOCS_NAV } from "./nav";
-import { GitHubMark } from "@/components/github-mark";
+import { GitHubStars } from "@/components/github-stars";
 import { SearchDialog } from "./search-dialog";
 
 function SidebarNav({ pathname, onNavigate }: { pathname: string; onNavigate: () => void }) {
@@ -90,15 +90,7 @@ export function DocsShell({ children }: { children: React.ReactNode }) {
         </button>
         <div className="docs-topbar-right">
           <ThemeMenu />
-          <a
-            className="docs-github"
-            href="https://github.com/akram6t"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <GitHubMark />
-            <span>GitHub</span>
-          </a>
+          <GitHubStars />
         </div>
       </header>
       <div className="docs-body">

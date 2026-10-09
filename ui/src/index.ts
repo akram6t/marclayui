@@ -46,9 +46,6 @@ export type { CardProps } from "./components/card/card";
 export { Input, Textarea } from "./components/input/input";
 export type { InputProps, TextareaProps, FieldSize } from "./components/input/input";
 
-export { Select } from "./components/select/select";
-export type { SelectProps, SelectOption } from "./components/select/select";
-
 export { Checkbox, CheckboxGroup, Radio, Switch } from "./components/checks/checks";
 export type {
   CheckboxProps,

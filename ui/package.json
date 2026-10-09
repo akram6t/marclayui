@@ -1,6 +1,6 @@
 {
   "name": "marclayui",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Claymorphism + neumorphism React component library with light/dark theming and runtime color control. Zero runtime dependencies, TypeScript-first, Next.js ready.",
   "license": "MIT",
   "author": "Akram (https://github.com/akram6t)",

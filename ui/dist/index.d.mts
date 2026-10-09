@@ -124,21 +124,6 @@ interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement
 }
 declare function Textarea({ label, hint, error, size, block, className, id, rows, ...rest }: TextareaProps): React.JSX.Element;
 
-interface SelectOption {
-    value: string;
-    label: string;
-}
-interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, "size"> {
-    label?: React.ReactNode;
-    hint?: React.ReactNode;
-    error?: string;
-    size?: "sm" | "md" | "lg";
-    /** Convenience over children: [{ value, label }] */
-    options?: SelectOption[];
-    placeholder?: string;
-}
-declare function Select({ label, hint, error, size, options, placeholder, className, id, children, ...rest }: SelectProps): React.JSX.Element;
-
 interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type"> {
     label?: React.ReactNode;
     /** Shows a dash instead of a tick — the classic "some children selected" state. */
@@ -391,4 +376,4 @@ interface StackProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 declare function Stack({ direction, gap, wrap, align, justify, className, ...rest }: StackProps): React.JSX.Element;
 
-export { Accordion, type AccordionEntry, type AccordionProps, Alert, type AlertProps, type AlertVariant, Avatar, AvatarGroup, type AvatarGroupProps, type AvatarProps, type AvatarSize, type AvatarStatus, Badge, type BadgeProps, type BadgeVariant, Button, ButtonGroup, type ButtonGroupProps, type ButtonProps, type ButtonSize, type ButtonVariant, COLOR_SWATCHES, Card, CardBody, CardFooter, CardHeader, type CardProps, CardTitle, Checkbox, CheckboxGroup, type CheckboxGroupOption, type CheckboxGroupProps, type CheckboxProps, type ColorOverrides, Divider, type DividerProps, Dropdown, type DropdownItem, type DropdownProps, type FieldSize, Input, type InputProps, Kbd, type KbdProps, MarclayProvider, type MarclayProviderProps, Modal, type ModalProps, type ModePreference, type NavLinkItem, Navbar, type NavbarProps, PRESETS, type PresetInfo, type PresetName, Progress, type ProgressProps, type ProgressTone, Radio, type RadioProps, Range, type RangeProps, Select, type SelectOption, type SelectProps, Skeleton, type SkeletonProps, Spinner, type SpinnerProps, Stack, type StackGap, type StackProps, Stat, type StatProps, type StatTone, Switch, type SwitchProps, type TabItem, Tabs, type TabsProps, Textarea, type TextareaProps, ThemeMenu, type ThemeMenuProps, type ThemeMode, ThemeProvider, ThemeToggle, type ThemeToggleProps, type ToastOptions, type ToastPlacement, ToastProvider, type ToastProviderProps, type ToastVariant, Tooltip, type TooltipPlacement, type TooltipProps, useTheme, useToast };
+export { Accordion, type AccordionEntry, type AccordionProps, Alert, type AlertProps, type AlertVariant, Avatar, AvatarGroup, type AvatarGroupProps, type AvatarProps, type AvatarSize, type AvatarStatus, Badge, type BadgeProps, type BadgeVariant, Button, ButtonGroup, type ButtonGroupProps, type ButtonProps, type ButtonSize, type ButtonVariant, COLOR_SWATCHES, Card, CardBody, CardFooter, CardHeader, type CardProps, CardTitle, Checkbox, CheckboxGroup, type CheckboxGroupOption, type CheckboxGroupProps, type CheckboxProps, type ColorOverrides, Divider, type DividerProps, Dropdown, type DropdownItem, type DropdownProps, type FieldSize, Input, type InputProps, Kbd, type KbdProps, MarclayProvider, type MarclayProviderProps, Modal, type ModalProps, type ModePreference, type NavLinkItem, Navbar, type NavbarProps, PRESETS, type PresetInfo, type PresetName, Progress, type ProgressProps, type ProgressTone, Radio, type RadioProps, Range, type RangeProps, Skeleton, type SkeletonProps, Spinner, type SpinnerProps, Stack, type StackGap, type StackProps, Stat, type StatProps, type StatTone, Switch, type SwitchProps, type TabItem, Tabs, type TabsProps, Textarea, type TextareaProps, ThemeMenu, type ThemeMenuProps, type ThemeMode, ThemeProvider, ThemeToggle, type ThemeToggleProps, type ToastOptions, type ToastPlacement, ToastProvider, type ToastProviderProps, type ToastVariant, Tooltip, type TooltipPlacement, type TooltipProps, useTheme, useToast };
